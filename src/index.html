@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Виджет Popover</title>
+  </head>
+
+  <body>
+    <!-- Демо-блок с настройками -->
+    <div class="demo-block" id="demoBlock">
+      <div class="demo-header">
+        <h3>🛠️ Демонстрация работы попапа</h3>
+        <button class="close-btn" id="closeDemoBtn" title="Скрыть блок">✖</button>
+      </div>
+      <p>
+        Введите текст и выберите, куда его добавить. Это позволит проверить поведение попапа в
+        разных условиях.
+      </p>
+      <textarea id="page-text-input" rows="3" placeholder="Введите текст..."></textarea>
+
+      <div class="position-controls">
+        <label><input type="radio" name="text-position" value="top" checked /> Текст сверху</label>
+        <label><input type="radio" name="text-position" value="bottom" /> Текст снизу</label>
+        <label><input type="radio" name="text-position" value="both" /> Текст сверху и снизу</label>
+      </div>
+
+      <button id="apply-text-btn" class="btn btn-secondary">Применить</button>
+      <button id="clear-text-btn" class="btn btn-secondary">Очистить</button>
+    </div>
+
+    <!-- Иконка для разворачивания блока (скрыта по умолчанию) -->
+    <div id="demoIcon" class="demo-icon" style="display: none">
+      <button title="Показать настройки">⚙️</button>
+    </div>
+
+    <!-- Контейнер для текста сверху кнопок -->
+    <div id="text-container-top" class="text-container"></div>
+
+    <!-- Кнопки-триггеры попапа -->
+    <!-- Кнопки-триггеры попапа -->
+    <button
+      class="btn btn-primary"
+      data-toggle="popover"
+      data-title="Заголовок попапа"
+      data-content="А вот здесь находится удивительный контент. Очень увлекательно, правда?"
+    >
+      Показать информацию
+    </button>
+    <button
+      class="btn btn-secondary"
+      data-toggle="popover"
+      data-title="Другой заголовок"
+      data-content="Ещё больше контента"
+    >
+      Показать другой текст
+    </button>
+
+    <!-- Контейнер для текста снизу кнопок -->
+    <div id="text-container-bottom" class="text-container"></div>
+  </body>
+</html>

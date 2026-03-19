@@ -1,0 +1,72 @@
+.popover {
+  position: absolute;
+  z-index: 1000;
+  max-width: 276px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+  font-family: sans-serif;
+  font-size: 0.875rem;
+}
+
+/* Стрелка для попапа, который сверху (без класса bottom) — снизу, смотрит вверх */
+.popover::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid rgba(0, 0, 0, 0.2);
+  /* тень снизу */
+}
+
+.popover::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #fff;
+  /* белая стрелка */
+}
+
+/* Если попап снизу (класс bottom) — стрелка сверху, смотрит вниз */
+.popover.bottom::before {
+  top: -8px;
+  bottom: auto;
+  border-top: none;
+  border-bottom: 8px solid rgba(0, 0, 0, 0.2);
+  /* тень сверху */
+}
+
+.popover.bottom::after {
+  top: -7px;
+  bottom: auto;
+  border-top: none;
+  border-bottom: 7px solid #fff;
+  /* белая стрелка */
+}
+
+/* Заголовок */
+.popover-title {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ebebeb;
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
+}
+
+/* Контент */
+.popover-content {
+  padding: 0.5rem 1rem;
+  white-space: normal;
+  word-wrap: break-word;
+}

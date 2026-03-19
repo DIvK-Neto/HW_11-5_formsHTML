@@ -1,0 +1,202 @@
+body {
+  font-family: sans-serif;
+  padding: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin: 0.5rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Стили для демо-блока с интерактивным полем */
+.demo-block {
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fafafa;
+  font-size: 0.9rem;
+}
+
+.demo-block h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.demo-block textarea {
+  width: 100%;
+  padding: 6px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: inherit;
+  resize: vertical;
+  /* запрещаем растягивание вширь */
+  max-width: 100%;
+}
+
+.demo-block button {
+  margin-right: 5px;
+  padding: 4px 10px;
+  font-size: 0.9rem;
+}
+
+.demo-block small {
+  color: #777;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 600px) {
+  .demo-block {
+    padding: 8px;
+    margin: 10px 0;
+  }
+
+  .demo-block h3 {
+    font-size: 1rem;
+  }
+
+  .demo-block textarea {
+    font-size: 0.9rem;
+    padding: 5px;
+  }
+
+  .demo-block button {
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+    font-size: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    font-size: 1rem;
+  }
+}
+
+/* Стили для демо-блока с настройками */
+.demo-block {
+  margin: 15px 0;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fafafa;
+  font-size: 0.9rem;
+}
+
+.demo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.demo-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #888;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+.demo-block textarea {
+  width: 100%;
+  padding: 6px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: inherit;
+  resize: vertical;
+  max-width: 100%;
+}
+
+.position-controls {
+  margin: 10px 0;
+}
+
+.position-controls label {
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.demo-block button {
+  margin-right: 5px;
+  padding: 4px 10px;
+  font-size: 0.9rem;
+}
+
+/* Иконка для разворачивания */
+.demo-icon {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.demo-icon button {
+  background: #28a745;
+  /* зелёный, приятный и заметный */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.demo-icon button:hover {
+  background: #218838;
+}
+
+/* Контейнеры для текста */
+.text-container {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .demo-block {
+    padding: 8px;
+  }
+
+  .position-controls label {
+    display: block;
+    margin: 5px 0;
+  }
+
+  .demo-block button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
