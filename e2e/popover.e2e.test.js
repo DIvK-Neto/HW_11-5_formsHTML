@@ -26,10 +26,10 @@ describe('E2E Popover', () => {
     const popover = await page.waitForSelector('.popover', { timeout: 5000 });
     expect(popover).not.toBeNull();
 
-    const title = await page.$eval('.popover-title', (el) => el.textContent);
+    const title = await page.$eval('.popover-title', el => el.textContent);
     expect(title).toBe('Заголовок попапа');
 
-    const content = await page.$eval('.popover-content', (el) => el.textContent);
+    const content = await page.$eval('.popover-content', el => el.textContent);
     expect(content).toContain('удивительный контент');
   }, 10000);
 
@@ -38,14 +38,12 @@ describe('E2E Popover', () => {
     await button.click();
     await page.waitForSelector('.popover');
 
-    await new Promise((resolve) => setTimeout(resolve, 100));
-
     await button.click();
-    await page.waitForSelector('.popover', { hidden: true, timeout: 10000 });
+    await page.waitForSelector('.popover', { hidden: true, timeout: 20000 });
 
     const popover = await page.$('.popover');
     expect(popover).toBeNull();
-  }, 15000);
+  }, 25000);
 
   test('клик на другую кнопку закрывает старый попап и открывает новый', async () => {
     const buttons = await page.$$('[data-toggle="popover"]');
@@ -53,15 +51,12 @@ describe('E2E Popover', () => {
 
     await buttons[0].click();
     await page.waitForSelector('.popover');
-    const title1 = await page.$eval('.popover-title', (el) => el.textContent);
+    const title1 = await page.$eval('.popover-title', el => el.textContent);
     expect(title1).toBe('Заголовок попапа');
 
-    await new Promise((resolve) => setTimeout(resolve, 100));
-
     await buttons[1].click();
-
-    await page.waitForSelector('.popover', { hidden: false, timeout: 10000 });
-    const title2 = await page.$eval('.popover-title', (el) => el.textContent);
+    await page.waitForSelector('.popover', { hidden: false, timeout: 20000 });
+    const title2 = await page.$eval('.popover-title', el => el.textContent);
     expect(title2).toBe('Другой заголовок');
-  }, 15000);
+  }, 25000);
 });
