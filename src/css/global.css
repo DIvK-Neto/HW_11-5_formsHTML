@@ -45,7 +45,6 @@ body {
   box-sizing: border-box;
   font-family: inherit;
   resize: vertical;
-  /* запрещаем растягивание вширь */
   max-width: 100%;
 }
 
@@ -159,7 +158,6 @@ body {
 
 .demo-icon button {
   background: #28a745;
-  /* зелёный, приятный и заметный */
   color: white;
   border: none;
   border-radius: 50%;

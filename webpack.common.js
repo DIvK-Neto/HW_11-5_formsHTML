@@ -17,7 +17,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            sourceType: 'unambiguous', // добавляем эту строку
+            sourceType: 'unambiguous',
           },
         },
       },

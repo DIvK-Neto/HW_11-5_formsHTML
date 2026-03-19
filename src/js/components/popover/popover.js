@@ -3,9 +3,8 @@
  */
 export class Popover {
   /**
-   * Создаёт экземпляр Popover.
-   * @param {HTMLElement} element - DOM-элемент, к которому привязан попап.
-   * @param {Object} options - Опции попапа (title, content).
+   * @param {HTMLElement} element
+   * @param {Object} options
    */
   constructor(element, options = {}) {
     this.element = element;
@@ -14,9 +13,6 @@ export class Popover {
     this.popoverElement = null;
   }
 
-  /**
-   * Показывает попап.
-   */
   show() {
     if (this.popoverElement) return;
 
@@ -25,9 +21,6 @@ export class Popover {
     this._positionPopover();
   }
 
-  /**
-   * Удаляет попап.
-   */
   remove() {
     if (this.popoverElement) {
       this.popoverElement.remove();

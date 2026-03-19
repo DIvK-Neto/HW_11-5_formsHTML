@@ -62,7 +62,7 @@ describe('Popover', () => {
         popoverWidth: 200,
         expectedLeft: 150,
       },
-      { triggerTop: 50, triggerLeft: 0, triggerWidth: 100, popoverWidth: 200, expectedLeft: 8 }, // слева край
+      { triggerTop: 50, triggerLeft: 0, triggerWidth: 100, popoverWidth: 200, expectedLeft: 8 },
       {
         triggerTop: 10,
         triggerLeft: 1100,
@@ -70,7 +70,7 @@ describe('Popover', () => {
         popoverWidth: 200,
         viewportWidth: 1200,
         expectedLeft: 992,
-      }, // справа край
+      },
     ])(
       'должен правильно рассчитывать left: $expectedLeft',
       ({
@@ -83,7 +83,6 @@ describe('Popover', () => {
       }) => {
         popover = new Popover(trigger);
 
-        // Мокаем размеры триггера
         jest.spyOn(trigger, 'getBoundingClientRect').mockReturnValue({
           top: triggerTop,
           left: triggerLeft,
@@ -93,31 +92,26 @@ describe('Popover', () => {
           right: triggerLeft + triggerWidth,
         });
 
-        // Создаём элемент попапа вручную (без show), чтобы контролировать его размеры
         popover.popoverElement = popover._createPopoverElement();
         document.body.append(popover.popoverElement);
 
-        // Мокаем размеры попапа
         Object.defineProperty(popover.popoverElement, 'offsetHeight', { value: 100 });
         Object.defineProperty(popover.popoverElement, 'offsetWidth', { value: popoverWidth });
         jest.spyOn(popover.popoverElement, 'getBoundingClientRect').mockReturnValue({
           width: popoverWidth,
           height: 100,
-          top: 0, // эти значения не важны для расчёта left
+          top: 0,
           left: 0,
           bottom: 100,
           right: popoverWidth,
         });
 
-        // Мокаем window.innerWidth
         Object.defineProperty(window, 'innerWidth', { value: viewportWidth, configurable: true });
 
         popover._positionPopover();
 
-        // Проверяем left (scrollLeft = 0)
         expect(popover.popoverElement.style.left).toBe(`${expectedLeft}px`);
 
-        // Очищаем
         popover.remove();
       },
     );

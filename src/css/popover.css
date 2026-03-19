@@ -20,7 +20,6 @@
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
   border-top: 8px solid rgba(0, 0, 0, 0.2);
-  /* тень снизу */
 }
 
 .popover::after {
@@ -32,7 +31,6 @@
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-top: 7px solid #fff;
-  /* белая стрелка */
 }
 
 /* Если попап снизу (класс bottom) — стрелка сверху, смотрит вниз */
@@ -41,7 +39,6 @@
   bottom: auto;
   border-top: none;
   border-bottom: 8px solid rgba(0, 0, 0, 0.2);
-  /* тень сверху */
 }
 
 .popover.bottom::after {
@@ -49,7 +46,6 @@
   bottom: auto;
   border-top: none;
   border-bottom: 7px solid #fff;
-  /* белая стрелка */
 }
 
 /* Заголовок */

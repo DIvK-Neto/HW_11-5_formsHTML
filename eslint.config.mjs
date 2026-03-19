@@ -19,17 +19,11 @@ export default [
   eslintPluginPrettierRecommended,
   {
     rules: {
-      // Запрет var
       'no-var': 'error',
-      // Предпочитать const/let
       'prefer-const': 'error',
-      // Строгое сравнение
       eqeqeq: ['error', 'always'],
-      // Запрет alert
       'no-alert': 'error',
-      // Стрелочные функции для колбэков
       'prefer-arrow-callback': 'error',
-      // Запрет appendChild
       'no-restricted-syntax': [
         'error',
         {
