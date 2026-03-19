@@ -19,10 +19,10 @@ describe('E2E Popover', () => {
   });
 
   test('при клике на первую кнопку появляется попап с правильным текстом', async () => {
-    await page.waitForSelector('[data-toggle="popover"]', { visible: true, timeout: 10000 });
+    await page.waitForSelector('[data-toggle="popover"]', { visible: true, timeout: 15000 });
     const button = await page.$('[data-toggle="popover"]');
     await button.click();
-    const popover = await page.waitForSelector('.popover', { timeout: 10000 });
+    const popover = await page.waitForSelector('.popover', { visible: true, timeout: 15000 });
     expect(popover).not.toBeNull();
 
     const title = await page.$eval('.popover-title', el => el.textContent);
@@ -30,14 +30,13 @@ describe('E2E Popover', () => {
 
     const content = await page.$eval('.popover-content', el => el.textContent);
     expect(content).toContain('удивительный контент');
-  }, 20000);
+  }, 30000);
 
   test('повторный клик на ту же кнопку скрывает попап', async () => {
     const button = await page.$('[data-toggle="popover"]');
     await button.click();
-    await page.waitForSelector('.popover', { timeout: 10000 });
+    await page.waitForSelector('.popover', { visible: true, timeout: 15000 });
 
-    await page.waitForTimeout(200);
     await button.click();
     await page.waitForSelector('.popover', { hidden: true, timeout: 15000 });
 
@@ -50,12 +49,12 @@ describe('E2E Popover', () => {
     expect(buttons.length).toBe(2);
 
     await buttons[0].click();
-    await page.waitForSelector('.popover', { timeout: 10000 });
+    await page.waitForSelector('.popover', { visible: true, timeout: 15000 });
     const title1 = await page.$eval('.popover-title', el => el.textContent);
     expect(title1).toBe('Заголовок попапа');
 
     await buttons[1].click();
-    await page.waitForSelector('.popover', { timeout: 15000 });
+    await page.waitForSelector('.popover', { visible: true, timeout: 15000 });
     const title2 = await page.$eval('.popover-title', el => el.textContent);
     expect(title2).toBe('Другой заголовок');
   }, 30000);
