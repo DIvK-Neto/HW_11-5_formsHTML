@@ -11,7 +11,7 @@
     "test": "jest --testPathIgnorePatterns=e2e",
     "coverage": "jest --coverage --testPathIgnorePatterns=e2e",
     "serve": "http-server dist -p 8080",
-    "test:e2e:run": "jest --testPathPatterns=e2e --runInBand --verbose",
+    "test:e2e:run": "jest --testPathPatterns=e2e --runInBand --verbose --env=node",
     "pretest:e2e": "npm run build",
     "test:e2e": "start-server-and-test serve http://localhost:8080 test:e2e:run",
     "prepare": "husky"
