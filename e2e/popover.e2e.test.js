@@ -10,8 +10,15 @@ describe('E2E Popover', () => {
       headless: 'new',
       slowMo: 50,
     });
+  });
+
+  beforeEach(async () => {
     page = await browser.newPage();
     await page.goto('http://localhost:8080', { waitUntil: 'networkidle0' });
+  });
+
+  afterEach(async () => {
+    await page.close();
   });
 
   afterAll(async () => {
@@ -19,8 +26,7 @@ describe('E2E Popover', () => {
   });
 
   test('при клике на первую кнопку появляется попап с правильным текстом', async () => {
-    await page.waitForSelector('[data-toggle="popover"]', { visible: true, timeout: 15000 });
-    const button = await page.$('[data-toggle="popover"]');
+    const button = await page.waitForXPath('//button[contains(text(), "Нажми, чтобы переключить попап")]', { timeout: 15000 });
     await button.click();
     const popover = await page.waitForSelector('.popover', { visible: true, timeout: 15000 });
     expect(popover).not.toBeNull();
@@ -33,7 +39,7 @@ describe('E2E Popover', () => {
   }, 30000);
 
   test('повторный клик на ту же кнопку скрывает попап', async () => {
-    const button = await page.$('[data-toggle="popover"]');
+    const button = await page.waitForXPath('//button[contains(text(), "Нажми, чтобы переключить попап")]', { timeout: 15000 });
     await button.click();
     await page.waitForSelector('.popover', { visible: true, timeout: 15000 });
 
@@ -44,16 +50,16 @@ describe('E2E Popover', () => {
     expect(popover).toBeNull();
   }, 30000);
 
-  test('клик на другую кнопку закрывает старый попап и открывает новый', async () => {
-    const buttons = await page.$$('[data-toggle="popover"]');
-    expect(buttons.length).toBe(2);
+  test('клик на вторую кнопку закрывает старый попап и открывает новый', async () => {
+    const button1 = await page.waitForXPath('//button[contains(text(), "Нажми, чтобы переключить попап")]', { timeout: 15000 });
+    const button2 = await page.waitForXPath('//button[contains(text(), "Ещё одна кнопка")]', { timeout: 15000 });
 
-    await buttons[0].click();
+    await button1.click();
     await page.waitForSelector('.popover', { visible: true, timeout: 15000 });
     const title1 = await page.$eval('.popover-title', el => el.textContent);
     expect(title1).toBe('Заголовок попапа');
 
-    await buttons[1].click();
+    await button2.click();
     await page.waitForSelector('.popover', { visible: true, timeout: 15000 });
     const title2 = await page.$eval('.popover-title', el => el.textContent);
     expect(title2).toBe('Другой заголовок');
