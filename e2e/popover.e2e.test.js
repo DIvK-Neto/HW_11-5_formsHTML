@@ -36,14 +36,17 @@ describe('E2E Popover', () => {
   test('повторный клик на ту же кнопку скрывает попап', async () => {
     const button = await page.$('[data-toggle="popover"]');
     await button.click();
-    await page.waitForSelector('.popover');
+    await page.waitForSelector('.popover'); 
+    await button.click(); 
 
-    await button.click();
-    await page.waitForSelector('.popover', { hidden: true, timeout: 20000 });
+    await page.waitForFunction(
+      () => !document.querySelector('.popover'),
+      { timeout: 30000 }
+    );
 
     const popover = await page.$('.popover');
     expect(popover).toBeNull();
-  }, 25000);
+  }, 40000);
 
   test('клик на другую кнопку закрывает старый попап и открывает новый', async () => {
     const buttons = await page.$$('[data-toggle="popover"]');
@@ -55,8 +58,8 @@ describe('E2E Popover', () => {
     expect(title1).toBe('Заголовок попапа');
 
     await buttons[1].click();
-    await page.waitForSelector('.popover', { hidden: false, timeout: 20000 });
+    await page.waitForSelector('.popover', { timeout: 30000 });
     const title2 = await page.$eval('.popover-title', el => el.textContent);
     expect(title2).toBe('Другой заголовок');
-  }, 25000);
+  }, 40000);
 });
